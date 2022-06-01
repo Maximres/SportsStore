@@ -7,7 +7,7 @@ export class CartSummary extends Component {
         if (this.props.cartItems > 0){
             return <span>
             {this.props.cartItems} item's,
-            ${this.props.cartPrice?.toFixed(2)}
+            ${Number(this.props.cartPrice).toFixed(2)}
         </span>
         }
 

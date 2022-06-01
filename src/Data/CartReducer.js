@@ -1,6 +1,7 @@
 import {ActionTypes} from "./Types";
 
 export const CartReducer = (storeData, action) => {
+    debugger
     let newStore = {cart: [], cartItems: 0, cartPrice: 0, ...storeData};
     switch (action.type) {
         case ActionTypes.CART_ADD:
@@ -30,9 +31,9 @@ export const CartReducer = (storeData, action) => {
         case ActionTypes.CART_REMOVE:
             let selection = newStore.cart.find(x => x.product.id === action.payload.id);
             if (selection){
-                newStore.cartPrice -= selection.quantity * selection.price;
+                newStore.cartPrice -= selection.quantity * selection.product.price;
                 newStore.cartItems -= selection.quantity;
-                newStore.cart = newStore.cart.filter(x => x.product.id === selection.id);
+                newStore.cart = newStore.cart.filter(x => x.product.id !== selection.product.id);
             }
             return newStore;
         case ActionTypes.CART_CLEAR:
