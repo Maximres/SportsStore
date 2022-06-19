@@ -14,8 +14,8 @@ export default class CartDetailsRow extends Component {
                                onChange={(ev) => this.handleChange(item.product, ev)} />
                     </td>
                     <td>{item.product.name}</td>
-                    <td>{item.product.price?.toFixed(2)}</td>
-                    <td>{(item.quantity * item.product.price)?.toFixed(2)}</td>
+                    <td>{item.product.price && item.product.price.toFixed(2)}</td>
+                    <td>{(item.quantity * item.product.price).toFixed(2)}</td>
                     <td>
                         <button className="btn btn-danger btn-sm" onClick={
                                 ()=> this.props.removeFromCart(item.product)}>
@@ -26,7 +26,7 @@ export default class CartDetailsRow extends Component {
             })}
             <tr>
                 <th className="text-right" colSpan={3}>Total:</th>
-                <th className="text-right" colSpan={2}>{this.props.cartPrice?.toFixed(2)}</th>
+                <th className="text-right" colSpan={2}>{this.props.cartPrice.toFixed(2)}</th>
             </tr>
         </React.Fragment>
     }
